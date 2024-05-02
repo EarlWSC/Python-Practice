@@ -5,14 +5,11 @@ name = input("what's your name?")
 
 # Greets user and introduces the Quiz
 if name == "":
-    print("uhm what the sigma")
-elif name == "":
-    print("Huh, you're a non name, weird!!!")
-else: 
-    print("Welcome to the Quiz,", name)
+    print("Where's your name lil bro?")
+print("Welcome to the Quiz,", name)
 print("This Quiz is about Formula One.")
 answer = input("Are you ready to take the quiz?")
-if answer == " yes":
+if answer == " yes" or "yes" or "Yes" or " Yes":
     print("Alright, let's begin!")
 elif answer == "":
     print("Alright, let's begin!")
@@ -25,7 +22,7 @@ answer = input("Who has won 7 World Championship Titles?")
 
 # Shows Answer 1
 
-if answer == " Lewis Hamilton":
+if answer == " Lewis Hamilton" or "Lewis Hamilton":
     print("You're Right!")
     score+= 5
 elif answer == "":
@@ -41,7 +38,7 @@ answer = input("Who stole Lewis Hamilton's 8th World Championship Title?")
 
 # Shows Answer 2
 
-if answer == " Max Verstappen":
+if answer == " Max Verstappen" or "Max Verstappen":
     print("You're Right!")
     score+= 5
 elif answer == "":
