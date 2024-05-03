@@ -49,7 +49,7 @@ else:
 print("\nThe Correct Answer was Max Verstappen!")
 
 # Asks Question 3 
-question = "How long has Rookie Fernando Alonso been racing in Formula One?"
+question = "How many years has Rookie Fernando Alonso been racing in Formula One?"
 a =21
 b =17
 c =20
