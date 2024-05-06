@@ -22,10 +22,10 @@ answer = input("Who has won 7 World Championship Titles?").lower()
 
 # Shows Answer 1
 
-if answer == "Lewis Hamilton" or answer == " Lewis Hamilton".lower():
+if answer == "Lewis Hamilton".lower() or answer == " Lewis Hamilton".lower():
     print("\nYou're Right!")
     score+= 5
-elif answer == "":
+elif answer != "Lewis Hamilton".lower() and answer != " Lewis Hamilton".lower():
     print("Make sure to type something next time?")
     print("\nSorry, but you're Wrong!")
 else:
@@ -38,10 +38,10 @@ answer = input("Who stole Lewis Hamilton's 8th World Championship Title?").lower
 
 # Shows Answer 2
 
-if answer == "Max Verstappen" or answer == " Max Verstappen".lower():
+if answer == "Max Verstappen".lower() or answer == " Max Verstappen".lower():
     print("\nYou're Right!")
     score+= 5
-elif answer == "":
+elif answer != "Max Verstappen".lower() and answer != " Max Verstappen".lower():
     print("Make sure to type something next time?")
     print("\nSorry, but you're Wrong!")
 else:
@@ -50,15 +50,15 @@ print("\nThe Correct Answer was Max Verstappen!")
 
 # Asks Question 3 
 question = "How many years has Rookie Fernando Alonso been racing in Formula One?"
-a =21
-b =17
-c =20
-d =19
+a = "21"
+b = "17"
+c = "20"
+d = "19"
 
-answer = input("{}\n A.{} \n B.{} \n C.{} \n D.{}\n Answer Here:".format(question, a, b, c, d)).lower()
+answer = input("{}\n A. {} \n B. {} \n C. {} \n D. {}\n Answer Here:".format(question, a, b, c, d)).lower()
 
 # Shows Answer 3
-if answer == c or answer == "c" or answer == " c".lower():
+if answer == c or answer == "c".lower() or answer == " c".lower():
     print("\nYou're right!")
     score+= 5
 else:
