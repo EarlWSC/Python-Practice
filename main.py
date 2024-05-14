@@ -1,9 +1,31 @@
-Q_FORMAT = ("{}\n A. {} \n B. {} \n C. {} \n D. {}\n Answer Here:")
-Q_RIGHT = ("\nYou're Right!")
-Q_ELIF = ("Make sure to type something next time?" "\nSorry, but you're Wrong!")
-Q_WRONG = ("\nSorry, but you're Wrong!")
-play = "yes".lower()
+# Imports random
+import random
 
+# Variables
+Q_FORMAT = "{}\n A. {} \n B. {} \n C. {} \n D. {}\n Answer Here:"
+
+Q_RIGHT = ["\nYou're Right!", 
+           "\nAwesome Job!", 
+           "\nFantastic!"]
+
+Q_ELIF = ["\nMake sure to type something next time?" 
+          "\nSorry, but you're Wrong!", 
+          "\nYou really need to type a real answer."]
+
+Q_WRONG = ["\nSorry, but you're Wrong!", 
+           "\n Unfortunately, you're Incorrect.", 
+           "\nClose guess! You're wrong though."]
+
+QUESTIONS = ["Who has won 7 World Championship Titles?",
+            "Who stole Lewis Hamilton's 8th World Championship Title?",
+            "How many years has Rookie Fernando Alonso been racing in Formula One?",]
+
+L_OPTIONS = [[" Max Verstappen", " Lewis Hamilton", " Kimi Raikkonen", " Mick Shumacher"],
+           [" Valteri Bottas", " Sebastian Vettel", " Lance Stroll", " Max Verstappen"],
+            ["21", "17", "20", "19"]]
+S_OPTIONS = ["a", "b", "c", "d"]
+ANSWERS = [2,4,3]
+play = "yes".lower()
 
 # Ask for user's name
 
@@ -41,49 +63,53 @@ while play == "yes".lower():
     question_attempts = tries
     while question_attempts > 0:
         # Asks Question 1 
-        question = "Who has won 7 World Championship Titles?"
-        answer = input(question).lower()
+        answer = input(Q_FORMAT.format(QUESTIONS[0], L_OPTIONS[0][0],
+                                        L_OPTIONS[0][1], L_OPTIONS[0][2], L_OPTIONS[0][3])).lower()
 
         # Shows Answer 1
 
         if answer == "Lewis Hamilton".lower() or answer == " Lewis Hamilton".lower():
-            print(Q_RIGHT)
+            print(random.choice(Q_RIGHT))
             score+= 5
             break
-        elif answer != "Lewis Hamilton".lower() and answer != " Lewis Hamilton".lower():
-            print (Q_ELIF)
+        elif answer == " ".lower():
+            print (random.choice(Q_ELIF))
 
         else:
-            print (Q_WRONG)
+            print (random.choice(Q_WRONG))
 
 
-        question_attempts -= 1     
-    print("\nThe Correct Answer was Lewis Hamilton!")
+        question_attempts -= 1
+        while question_attempts <= 0:     
+            print("\nThe Correct Answer was Lewis Hamilton!")
+            break
+
 
     while question_attempts > 0:
         # Asks Question 2 
-        question = "Who stole Lewis Hamilton's 8th World Championship Title?"
-        answer = input(question).lower()
+        answer = input(Q_FORMAT.format(QUESTIONS[1], L_OPTIONS[1][0],
+                                        L_OPTIONS[1][1], L_OPTIONS[1][2], L_OPTIONS[1][3])).lower()
 
         # Shows Answer 2
 
         if answer == "Max Verstappen".lower() or answer == " Max Verstappen".lower():
-            print(Q_RIGHT)
+            print(random.choice(Q_RIGHT))
             score+= 5
             break
-        elif answer != "Max Verstappen".lower() and answer != " Max Verstappen".lower():
-            print (Q_ELIF)
+        elif answer == " ".lower():
+            print (random.choice(Q_ELIF))
 
         else:
-            print (Q_WRONG)
+            print (random.choice(Q_WRONG))
 
 
-        question_attempts -= 1  
-    print("\nThe Correct Answer was Max Verstappen!")
+        question_attempts -= 1 
+        while question_attempts <= 0: 
+            print("\nThe Correct Answer was Max Verstappen!")
+            break
 
         # Asks Question 3 
-    while question_attempts > 0:
-        question = "How many years has Rookie Fernando Alonso been racing in Formula One?"
+    while question_attempts > 0: 
         a = "21"
         b = "17"
         c = "20"
@@ -94,27 +120,29 @@ while play == "yes".lower():
         # Shows Answer 3
 
         if answer == c or answer == "c".lower() or answer == " c".lower():
-            print(Q_RIGHT)
+            print(random.choice(Q_RIGHT))
             score+= 5
             break
         else:
-            print(Q_WRONG)
+            print(random.choice(Q_WRONG))
 
             
         question_attempts -= 1 
-    print("\nThe Correct Answer was C. 20 Years")
 
+        while question_attempts <= 0:
+            print("\nThe Correct Answer was C. 20 Years")
+            break
 
     # Quiz Ends
     print("In total, {} managed to accumalate {} points".format(name, score))
     if score == 15:
-        print ("\nWow! Steffen thinks you're really hot!")
+        print ("\nWow!")
             
     if score < 10:
-        print ("\nWelp, Henry will touch you now!")
+        print ("\nWelp,")
             
     elif score < 15:
-        print ("\nNice, Jackson really likes you!")
+        print ("\nNice!")
     question_attempts = -1  
 
      # Asks user if they want to play the Quiz again
