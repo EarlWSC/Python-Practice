@@ -1,20 +1,22 @@
 import random
-ANSWERS = ["Lexus", "Mercedes", "Jaguar", "Chevrolette", "Mclaren", "Audi", "Aston Martin", "BMW", "Lotus", "Porsche"]
-
+ANSWERS = ["Ferrari", "Mercedes", "Alpine", "Red Bull", "Mclaren", "Kick Sauber", "Aston Martin", "Williams", "Visa CashApp Racing Bulls", "Haas"]
+guesses = []
 score = 0
 MAX_TURNS = 10
+play = "yes".lower() or " yes".lower()
 # ---- FUNCTIONS ----
+def name():
+    name = input("What is the name of our player? ")
 
+        #Greeting User
+    print("\nWelcome {} to the quiz! This quiz is the 10 Teams of the 2024 Formula 1 WDC!!"
+        .format(name))
 
 # -- Intro --
 def intro():
 
     #Name Input
-    name = input("What is the name of our player? ")
-
-    #Greeting User
-    print("\nWelcome {} to the quiz! This quiz is the Top 10 Most popular car brands!"
-          .format(name))
+    name()
 
     question = "Do you think you'll name them all? "
     skill = input(question).lower()
@@ -32,7 +34,7 @@ def getAttempts():
             Attempts = input("\nHow many attempts would you like to have? ")
             try:
                 Attempts = int(Attempts)
-                if Attempts >= 0 and Attempts <= MAX_TURNS:
+                if Attempts >= 1 and Attempts <= MAX_TURNS:
                      print("Ok, you will have {} Attempts.".format(Attempts))
                      return Attempts
                 elif Attempts >= MAX_TURNS:
@@ -46,26 +48,49 @@ def getAttempts():
 # -- Miscellaneous --
 def scoreadd(number):
     return number + 5
-def isCorrect(answer, list):
+def inList(answer, list):
      if answer in list:
           return True
      else:
           return False
 # ---- MAIN CODE ----
-
+# - Intro -
 intro()
-Attempts = getAttempts()
 # -- Main Game --
-score = 0
-while Attempts > 0: 
-    answer = input("\nName one of the Top 10 most popular car brands based off popularity rankings. ")
+while play == "yes".lower() or " yes".lower():
+    Attempts = getAttempts()
+    score = 0
+    while Attempts > 0: 
+        # - Asks the Question -
+        answer = input("\nName one of the 10 Teams in Formula 1 in 2024.")
 
-    if isCorrect(answer,ANSWERS).lower():
-        print("Nice! That's one of them.")
-        score += 1
+    # - Checks if right or wrong -
+        if inList(answer,ANSWERS):
+        # - Checks if guessed already or not-
+            # Guessed Already
+            if inList(answer,guesses):
+                print("\nYou've already guessed that. Here's the list you've already guessed:\n {}".format(len(guesses)))
+            # Correct Answer
+            else:
+                print("Awesome! That's one of them!")
+                score += 1
+                guesses.append(answer)
+                print("\nYou guessed {}. \nYou have named {} of the brands so far and have {} Attempts remaining!".format(len(guesses),score,Attempts))
+        # Wrong Answer
+        else:
+            print("\nIncorrect!")
+            Attempts -= 1
+            print("\nYou guessed {}. \nYou have named {} of the brands so far and have {} Attempts remaining!".format(len(guesses),score,Attempts))
+    # - Checks if guessed all -
+        if score >= 10:
+            break
+
+    # -- End of Quiz --
+    print("\nGood job! You managed to name {}/10 of the Teams.".format(score))
+    # - Wanna play again? - 
+    play = input("\nWould you like to play again?")
+    if play == "yes".lower() or " yes".lower():
+        print("Alright, let's play again!")
     else:
-        print("Nice try! Try naming a popular sports car brand like Porsche?")
-        Attempts -= 1
-
-print("Good job! You managed to name {}/10 of the brands!".format(score))
-        
+        print("Thanks for playing.")
+        break
