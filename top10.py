@@ -1,5 +1,5 @@
 import random
-ANSWERS = ["Ferrari", "Mercedes", "Alpine", "Red Bull", "Mclaren", "Kick Sauber", "Aston Martin", "Williams", "Visa CashApp Racing Bulls", "Haas"]
+ANSWERS = ["ferrari", "mercedes", "alpine", "red bull", "mclaren", "kick sauber", "aston martin", "williams", "visa cashapp rb", "haas"]
 guesses = []
 score = 0
 MAX_TURNS = 10
@@ -19,10 +19,10 @@ def intro():
     name()
 
     question = "Do you think you'll name them all? "
-    skill = input(question).lower()
+    play = input(question).lower()
 
     # Replies to their reply
-    if skill == "yes" or skill == " yes".lower():
+    if play == "yes" or play == " yes".lower():
         print("\nWell well, We'll see about that!")
     else:
         print("\nAlright! Maybe you'll do better than what you think!")
@@ -53,23 +53,29 @@ def inList(answer, list):
           return True
      else:
           return False
+     
 # ---- MAIN CODE ----
 # - Intro -
 intro()
 # -- Main Game --
 while play == "yes".lower() or " yes".lower():
     Attempts = getAttempts()
+    del score
+    del guesses
+    guesses = []
     score = 0
     while Attempts > 0: 
         # - Asks the Question -
-        answer = input("\nName one of the 10 Teams in Formula 1 in 2024.")
+        answer = input("\nName one of the 10 Teams in Formula 1 in 2024.").lower()
 
     # - Checks if right or wrong -
         if inList(answer,ANSWERS):
         # - Checks if guessed already or not-
             # Guessed Already
             if inList(answer,guesses):
-                print("\nYou've already guessed that. Here's the list you've already guessed:\n {}".format(len(guesses)))
+                print("\nYou've already guessed that. Here's the list you've already guessed:")
+                for line in guesses:
+                    print(line)
             # Correct Answer
             else:
                 print("Awesome! That's one of them!")
@@ -88,8 +94,8 @@ while play == "yes".lower() or " yes".lower():
     # -- End of Quiz --
     print("\nGood job! You managed to name {}/10 of the Teams.".format(score))
     # - Wanna play again? - 
-    play = input("\nWould you like to play again?")
-    if play == "yes".lower() or " yes".lower():
+    play = input("\nWould you like to play again? ")
+    if play == "yes".lower() and " yes".lower():
         print("Alright, let's play again!")
     else:
         print("Thanks for playing.")
