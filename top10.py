@@ -69,6 +69,7 @@ while play == "yes".lower() or " yes".lower():
         answer = input("\nName one of the 10 Teams in Formula 1 in 2024.").lower()
 
     # - Checks if right or wrong -
+
         if inList(answer,ANSWERS):
         # - Checks if guessed already or not-
             # Guessed Already
